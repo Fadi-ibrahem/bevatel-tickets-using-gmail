@@ -44,7 +44,7 @@ You can now access the server at http://localhost:8000
 
 **TL;DR command list**
 
-    git clone https://github.com/Fadi-ibrahem/Bevatel-Task.git
+    git clone https://github.com/Fadi-ibrahem/bevatel-tickets-using-gmail.git
     cd bevatel-tickets-using-gmail
     composer install
     cp .env.example .env
