@@ -117,13 +117,13 @@ This application adheres to the api specifications set by the [Mailtrap](https:/
 - `database/migrations` - Contains all the database migrations
 - `database/seeds` - Contains the database seeder
 
-## Environment variables
+# Environment variables
 
 - `.env` - Environment variables can be set in this file
 
 ***Note*** : You can quickly set the database information and other variables in this file and have the application fully working.
 
-# New Constants
+## New Constants
 
 - `GMAIL_API_CLIENT_ID` - the client id of google created app on the google cloud console
 - `GMAIL_API_CLIENT_SECRET` - the client secret of google created app on the google cloud console
