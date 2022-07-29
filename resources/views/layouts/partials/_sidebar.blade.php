@@ -13,14 +13,6 @@
                     All Replies
                 </a>
             </li>
-            @if(!session()->has('gtoken'))
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('token.generate')}}">
-                        <span data-feather="home" class="align-text-bottom"></span>
-                        Signup With Gmail
-                    </a>
-                </li>
-            @endif
         </ul>
     </div>
 </nav>

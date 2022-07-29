@@ -2,14 +2,14 @@
 
 namespace App\Jobs;
 
-use App\Services\SendGMailService;
+use App\Mail\ReplyMessageMail;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 
 class SendReplyJob implements ShouldQueue
 {
@@ -32,11 +32,8 @@ class SendReplyJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle(SendGMailService $mail)
+    public function handle()
     {
-        $token = Session::get('gtoken');
-        $subject = 'This Is Subject From Bevatel Tikcet Management App With Mail Tracking For (Sending Reply Message) Hiring Task';
-        $content = $this->data['content'];
-        $mail->sendEmail($token, 'fadyibrahem.dev@gmail.com', $subject, $content);
+        Mail::to($this->data['email'])->send(new ReplyMessageMail($this->data));
     }
 }

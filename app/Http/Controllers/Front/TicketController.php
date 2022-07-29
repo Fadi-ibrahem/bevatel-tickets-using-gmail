@@ -59,14 +59,8 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
-        // Check whether google api token retrieved or not
-        if(Session::exists('gtoken')) {
-            // Create new ticket record using TicketRepository
-            $this->ticketRepo->store($request->except(['_token']));
-        } else {
-            // Generate Google Authentication Token
-            return redirect()->route('token.generate');
-        }
+        // Create new ticket record using TicketRepository
+        $this->ticketRepo->store($request->except(['_token']));
 
         return redirect()->route('tickets.index')->with('success', 'Ticket Added Successfully!');
     }

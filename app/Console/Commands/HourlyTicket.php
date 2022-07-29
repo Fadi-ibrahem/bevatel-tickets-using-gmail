@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Interfaces\TicketRepositoryInterface;
-use App\Services\GetMailboxMessageService;
+use App\Mail\AcknowledgeMail;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
+use App\Services\GetGMailMessageService;
+use App\Interfaces\TicketRepositoryInterface;
 
 class HourlyTicket extends Command
 {
@@ -46,11 +48,11 @@ class HourlyTicket extends Command
      *
      * @return int
      */
-    public function handle(GetMailboxMessageService $mailboxMsg)
+    public function handle(GetGMailMessageService $mailboxMsg)
     {
         // Create new ticket record using TicketRepository
-//        $this->ticketRepo->store($mailboxMsg->getMessage());
-//
-//        $this->info('Successfully Added hourly ticket from a mailbox fetched message.');
+        $this->ticketRepo->store($mailboxMsg->getMessage());
+
+        $this->info('Successfully Added hourly ticket from a GMail mailbox fetched message.');
     }
 }

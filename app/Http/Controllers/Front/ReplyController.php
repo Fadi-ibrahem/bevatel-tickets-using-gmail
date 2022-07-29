@@ -60,21 +60,14 @@ class ReplyController extends Controller
      */
     public function store(StoreReplyRequest $request)
     {
-        // Check whether google api token retrieved or not
-        if(Session::exists('gtoken')) {
-            // The data which will be stored as a new reply
-            $data = $request->except(['_token']);
+        // The data which will be stored as a new reply
+        $data = $request->except(['_token']);
 
-            // Create new reply record using ReplyRepository
-            $this->replyRepo->store($data);
+        // Create new reply record using ReplyRepository
+        $this->replyRepo->store($data);
 
-            // Add ticket's email to the data before triggering the event
-            $data['email'] = Ticket::find($request->ticket_id)->email;
-
-        } else {
-            // Generate Google Authentication Token
-            return redirect()->route('token.generate');
-        }
+        // Add ticket's email to the data before triggering the event
+        $data['email'] = Ticket::find($request->ticket_id)->email;
 
         // Trigger the event
         event(new ReplyMessageEvent($data));
