@@ -86,7 +86,7 @@ docker-compose exec php php artisan serve --host=0.0.0.0
 
 ## API Specification
 
-This application adheres to the api specifications set by the [Mailtrap](https://mailtrap.io/) team. This helps to fetch and retrieve messages from any mailtrap messages inbox.
+This application adheres to the api specifications set by the [PHP-IMAP](https://www.php-imap.com/) team. This helps to fetch and retrieve messages from any Mail messages inbox which use an IMAP Service.
 
 > [Full API Spec](https://mailtrap.docs.apiary.io/#)
 
@@ -96,8 +96,7 @@ This application adheres to the api specifications set by the [Mailtrap](https:/
 
 ## Dependencies
 
-- [PHPMailer](https://github.com/PHPMailer/PHPMailer) - For Send Email Using A Specific Gmail
-- [Google OAuth2 ](https://github.com/thephpleague/oauth2-google) - For Authenticating With Google To Use Gmail API
+- [Webklex/laravel-imap](https://github.com/Webklex/laravel-imap) - To Use Google IMAP Service Easly
 
 ## Folders
 
@@ -125,19 +124,21 @@ This application adheres to the api specifications set by the [Mailtrap](https:/
 
 ## New Constants
 
-- `GMAIL_API_CLIENT_ID` - the client id of google created app on the google cloud console
-- `GMAIL_API_CLIENT_SECRET` - the client secret of google created app on the google cloud console
-- `GMAIL_FROM_ADDRESS` - an email address such as 'example@gmail.com' to send message from
+- `IMAP_HOST` - The IMAP host such as 'imap.gmail.com'
+- `IMAP_PORT` - The IMAP port is 993
+- `IMAP_ENCRYPTION` - The encryption is preferable to 'ssl'
+- `IMAP_VALIDATE_CERT` - The validation certificate set to 'true'
+- `IMAP_USERNAME` - The full email address such as 'name@gmail.com'
+- `IMAP_PASSWORD` - The password
+- `IMAP_DEFAULT_ACCOUNT` - set it as 'default'
+- `IMAP_PROTOCOL` - The IMAP protocol must be 'imap'
 
 
 ----------
 
 # Authentication
  
-This applications uses Open Authorization (OAuth 2.0) to handle authentication. it is a standard designed to allow a website or application to access resources hosted by other web apps on behalf of a user. The token is requisted from google then it is stored in a global session called "gtoken" this gives the cabability to login only one time to gmail account then send messages as possible along using the application.
- 
-- https://console.cloud.google.com/
-- https://developers.google.com/identity/protocols/oauth2
+This applications uses Internet Message Access Protocoln (IMAP) to handle authentication. is a standard email retrieval (incoming) protocol. It stores email messages on a mail server and enables the recipient to view and manipulate them as though they were stored locally on their device(s).
 
 ----------
  
