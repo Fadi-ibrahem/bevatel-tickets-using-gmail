@@ -1,6 +1,6 @@
 # ![Bevatel Ticket System App](bevatel.png)
 
-> ### Example Laravel codebase containing real world examples (CRUD, Mail Tracking, APIs, Advanced Patterns and more) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
+> ### Example Laravel codebase containing real world examples (CRUD, Mail Tracking, APIs, Advanced Patterns and more) Usin Gmail and IMAP that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec.
 
 This repo is functionality complete — For Bevatel Task.
 
